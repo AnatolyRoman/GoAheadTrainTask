@@ -10,9 +10,12 @@ st.set_page_config(page_title="Go Ahead: Train Task")
 
 st.markdown('''
     <h1 style="text-align: left; font-family: 'Gill Sans'; color: #fd7e14; font-size: 100px;">Go Ahead</h1>
+    <hr style="border-top: 5px solid #fd7e14; margin-top: 30px; margin-bottom: 30px;">
     <h1 style="text-align: left; font-family: 'Gill Sans'; color: #007aff; font-size: 70px;">Train Task</h1>
 ''', unsafe_allow_html=True)
-
+st.markdown(
+    f'<hr style="border-top: 5px solid #007aff; margin-top: 30px; margin-bottom: 30px;">',
+    unsafe_allow_html=True)
 st.markdown('''
     <h1 style="text-align: left; font-family: 'Gill Sans'; color: #928FFF; font-size: 40px;">Задание 1. Логика</h1>
     <h1 style="text-align: left; font-family: 'Gill Sans'; color: #FF2A00; font-size: 25px;"></h1>
