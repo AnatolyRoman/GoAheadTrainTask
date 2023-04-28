@@ -116,15 +116,20 @@ st.markdown('''<h1 style="text-align: left; font-family: 'Gill Sans'; color: #92
             unsafe_allow_html=True)
 
 
+import streamlit as st
+import numpy as np
 
+@st.cache
 def piecewise_constant(x, params):
     a, b, c = params
     return np.piecewise(x, [x < c, x >= c], [a, b])
 
+@st.cache
 def mse(params, x, y):
     y_pred = piecewise_constant(x, params)
     return np.mean((y - y_pred)**2)
 
+@st.cache
 def optimize_params(x, y):
     # Используем метод перебора для поиска минимума функции mse
     params = np.zeros((3,))
@@ -139,6 +144,34 @@ def optimize_params(x, y):
             params = [a, b, c]
     return tuple(params)
 
+def draw_graph(x, y, a, b, c):
+    # Рисуем точки
+    for i in range(len(x)):
+        st.write(f"({x[i]:.2f}, {y[i]:.2f})")
+
+    # Рисуем кусочно-постоянную функцию
+    for i in range(len(x)-1):
+        st.line_chart({
+            'data': [
+                [x[i], a],
+                [x[i+1], a],
+                [x[i+1], b],
+                [x[i], b]
+            ],
+            'width': 2,
+            'use_container_width': True,
+        })
+    st.line_chart({
+        'data': [
+            [x[-2], a],
+            [x[-1], a],
+            [x[-1], b],
+            [x[-1] + (x[-1] - x[-2]), b]
+        ],
+        'width': 2,
+        'use_container_width': True,
+    })
+
 def app():
     st.title("Оптимизация параметров кусочно-постоянной функции")
     n = st.slider("Выберите количество точек", 2, 100, 10)
@@ -147,15 +180,8 @@ def app():
     x = A[:, 0]
     y = A[:, 1]
     a, b, c = optimize_params(x, y)
-
     st.header("График данных и оптимальной кусочно-постоянной функции")
-    fig, ax = plt.subplots()
-    ax.scatter(x, y)
-    ax.plot(x, piecewise_constant(x, [a, b, c]), c='r')
-
-    # добавляем настройки для matplotlib
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    st.pyplot(fig)
+    draw_graph(x, y, a, b, c)
 
 if __name__ == '__main__':
     app()
