@@ -106,7 +106,8 @@ st.markdown(
 
 
 st.markdown('''<h1 style="text-align: left; font-family: 'Gill Sans'; color: #928FFF"
-            >Задание 1 .  Логика</h1><h1 style="text-align: left; font-family: 'Gill Sans'; color: #FF2A00"
+            >Математика + Программирование
+            </h1><h1 style="text-align: left; font-family: 'Gill Sans'; color: #FF2A00"
             ></h1>''', 
             unsafe_allow_html=True)
 
