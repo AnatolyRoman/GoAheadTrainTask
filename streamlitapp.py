@@ -106,7 +106,7 @@ st.markdown(
 
 
 st.markdown('''<h1 style="text-align: left; font-family: 'Gill Sans'; color: #928FFF"
-            >Математика + Программирование
+            >Задание 2. Математика + Программирование
             </h1><h1 style="text-align: left; font-family: 'Gill Sans'; color: #FF2A00"
             ></h1>''', 
             unsafe_allow_html=True)
@@ -163,6 +163,9 @@ if __name__ == '__main__':
 
 
 
+st.markdown(
+    f'<hr style="border-top: 5px solid #fd7e14; margin-top: 30px; margin-bottom: 30px;">',
+    unsafe_allow_html=True)
 
 
 
