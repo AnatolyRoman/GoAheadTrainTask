@@ -10,9 +10,6 @@ st.markdown(f"""<style>{open("styles.css").read()}</style>""", unsafe_allow_html
 
 
 
-
-st.set_page_config(page_title="Go Ahead: Train Task")
-
 st.markdown('''
     <h1 style="text-align: left; font-family: 'Gill Sans'; color: #fd7e14; font-size: 100px;">Go Ahead</h1>
     <hr style="border-top: 5px solid #fd7e14; margin-top: 30px; margin-bottom: 30px;">
