@@ -5,6 +5,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from PIL import Image
 
+# Стилизация приложения
+st.markdown(f"""<style>{open("styles.css").read()}</style>""", unsafe_allow_html=True)
 
 st.set_page_config(page_title="Go Ahead: Train Task")
 
