@@ -1,7 +1,5 @@
 import streamlit as st
 import numpy as np
-from scipy.optimize import minimize
-import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -117,13 +115,6 @@ st.markdown('''<h1 style="text-align: left; font-family: 'Gill Sans'; color: #92
 
 
 
-
-
-import streamlit as st
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.optimize import minimize
-
 def piecewise_constant(x, params):
     a, b, c = params
     return np.piecewise(x, [x < c, x >= c], [a, b])
@@ -133,8 +124,18 @@ def mse(params, x, y):
     return np.mean((y - y_pred)**2)
 
 def optimize_params(x, y):
-    result = minimize(mse, [0, 0, np.median(x)], args=(x, y))
-    return tuple(result.x)
+    # Используем метод перебора для поиска минимума функции mse
+    params = np.zeros((3,))
+    min_mse = float('inf')
+    for i in range(1, x.size):
+        a = y[:i].mean()
+        b = y[i:].mean()
+        c = x[i-1]
+        mse_val = mse([a, b, c], x, y)
+        if mse_val < min_mse:
+            min_mse = mse_val
+            params = [a, b, c]
+    return tuple(params)
 
 def app():
     st.title("Оптимизация параметров кусочно-постоянной функции")
