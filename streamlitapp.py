@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-
+from PIL import Image
 
 
 st.set_page_config(page_title="Go Ahead: Train Task")
@@ -106,8 +106,7 @@ st.markdown(
 
 
 st.markdown('''<h1 style="text-align: left; font-family: 'Gill Sans'; color: #928FFF"
-            >Задание 2. Математика + Программирование
-            </h1><h1 style="text-align: left; font-family: 'Gill Sans'; color: #FF2A00"
+            >Задание 2. Математика + программирование </h1><h1 style="text-align: left; font-family: 'Gill Sans'; color: #FF2A00"
             ></h1>''', 
             unsafe_allow_html=True)
 
@@ -115,7 +114,21 @@ st.markdown('''<h1 style="text-align: left; font-family: 'Gill Sans'; color: #92
             >Условие:</h1><h1 style="text-align: left; font-family: 'Gill Sans'; color: #FF2A00"
             ></h1>''', 
             unsafe_allow_html=True)
+st.markdown('''
+    <p style="text-align: left; font-family: 'Gill Sans'; color: #D8D8D8; font-size: 20px;">
+    Дана кусочно-постоянная функция F: 
+    </p>
+''', unsafe_allow_html=True)
 
+image = Image.open('example.jpg')
+st.image(image)
+
+st.markdown('''
+    <p style="text-align: left; font-family: 'Gill Sans'; color: #D8D8D8; font-size: 20px;">
+    Напишите на любом ЯП (предпочтительно Python 3) программу, которая принимает на вход массив A пар (x, y) длины n, и возвращает кортеж из трех элементов (a, b, c), соответствующих параметрам функции F, при которых среднеквадратическое отклонение функции от точек из A минимально.
+    Визуализация решения приветствуется.
+    </p>
+''', unsafe_allow_html=True)
 
 def piecewise_constant(x, params):
     a, b, c = params
